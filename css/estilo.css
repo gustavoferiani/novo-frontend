@@ -1,0 +1,634 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=League+Spartan:wght@100..900&display=swap');
+
+/* Definir o tema dark do site */
+:root, 
+:root[data-theme='dark'] {
+    --primary-color: #F0F0F0;
+    --primary-bg-color: #111217;
+    --secondary-bg-color: #28292E;
+    --primary-border-color: #28292E;
+    --secondary-border-color: #56575A;
+    --title-color: #F0F0F0;
+    --text-color: #8f8f8f;
+    --link-color: #F0F0F0;
+    --icon-color: #C7C8C9;
+
+}
+:root[data-theme='light'] {
+    --primary-color: #0B0B0F;
+
+	--primary-bg-color: #E9E9E9;
+	--secondary-bg-color: #C7C8C9;
+	--primary-border-color: #C7C8C9;
+	--secondary-border-color: #9A9A9C;
+
+	--title-color: #0B0B0F;
+	--text-color: #a3a2a2;
+	--link-color: #0B0B0F;
+	--icon-color: #56575A;
+}
+/*
+definindo variáveis de cores para um tema claro e um tema escuro
+
+ROOT refere-se ao elemento raiz do documento HTML
+
+seletor :root define as variáveis globais
+
+Isso oferece uma maneira flexível de definir valores
+que podem ser reutilizados em todo o seu CSS e facilmente atualizados de um único lugar.
+*/
+html[data-theme='light'] .logo {
+    filter:invert(1);
+}
+html[data-theme='light'] .tecnologia-logo {
+    filter: invert(80%);
+}
+/*  (*) reset do CSS */
+* {
+   margin: 0px;  /* margem */
+   padding: 0px;  /* preenchimento // espaçamento */ 
+   box-sizing: border-box;
+    /* 
+    A propriedade box-sizing em CSS é usada para alterar o modelo de caixa de um elemento.
+    O valor border-box é usado para garantir que a largura e a altura de um elemento
+    incluam as bordas e o preenchimento, em vez de apenas o conteúdo.
+    Quando você define box-sizing: border-box;, está dizendo ao navegador
+    para calcular a largura e a altura total de um elemento,
+    incluindo a largura das bordas e o preenchimento, e não apenas o conteúdo.
+    */
+   list-style: none;
+   scrollbar-width: thin;
+   scrollbar-color: var(--secondary-bg-color) transparent;
+}
+body {
+    background: var(--primary-bg-color);
+    font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+}
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+a:hover {
+    color: var(--primary-color);
+}
+i {
+    color: var(--icon-color);
+}
+b {
+    font-weight: 400;
+}
+h1 {
+    font-size: 2.5rem;
+    font-weight: 200;
+}
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 0.4rem;
+}
+h3 {
+    font-size: 1.55rem;
+    text-align: left;
+}
+h4 {
+    color: var(--primary-color);
+    font-weight: 400;
+    font-size: 1.15rem;
+    text-align: left;
+}
+h1, h2, h3{
+    font-family: 'League Spartan', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    color: var(--title-color);
+    font-weight: 200;
+}
+p, span, li {
+    font-size: 1rem;
+}
+p {
+    text-align: justify;
+}
+
+#header {
+    display: flex;
+    flex-flow: row wrap;
+    /* Coloca o conteúdo em linha e permite a quebra de linha. */
+    justify-content: space-between;
+    /* Os itens dentro do container flexível serão distribuídos de maneira uniforme ao longo do eixo principal, com espaços iguais entre eles.  */
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    z-index: 99999;
+    position: fixed;
+    border-bottom: 1px solid var(--primary-border-color);
+    background: var(--primary-bg-color);
+}
+
+/* Ajuste para o menu principal no desktop */
+.header-nav { 
+    display: none; /* Esconde por padrão em mobile */
+}
+
+.header-logo .logo {
+    width: 3.25rem;
+    height: 3.25rem;
+}
+.header-toggle {
+    display: flex;
+    justify-content: flex-end;
+}
+#toggleTheme {
+    font-size: 1.5rem;
+    color: var(--icon-color);
+    cursor: pointer;
+    transition: ease-in-out .4s;
+}
+.menu{
+    display: flex;
+    /*  Torna o elemento um flex container automaticamente
+    transformando todos os seus filhos diretos em flex itens */
+    align-items: center;
+    background: var(--primary-bg-color);
+    gap: 1rem;
+}
+.menu-item{
+    width: 100%;
+}
+.menu-link{
+    display: flex; 
+    /*  Torna o elemento um flex container automaticamente
+    transformando todos os seus filhos diretos em flex itens */
+    align-items: center;
+    gap: .5rem;  
+    /* usada para definir o espaço entre os elementos
+    criar espaçamento uniforme entre os elementos
+    */
+}
+
+.menu-link.active .menu-icon, 
+.menu-link.active .menu-text,
+.menu-link:hover .menu-icon, 
+.menu-link:hover .menu-text {
+  color: var(--link-color);
+  
+}
+.menu-icon, .menu-text{
+    color: var(--text-color);
+    font-weight: 600;
+}
+.menu-icon{
+    font-size: 1.5rem;
+}
+.menu-text {
+    font-size: .75rem;
+    text-transform: uppercase;
+}
+
+.menu-principal {
+    gap: 1rem;
+}
+
+
+/* Estilos do botão do menu mobile */
+.btn-menu-mobile {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.8rem; /* Tamanho do ícone */
+    color: var(--icon-color);
+    display: flex; /* Para centralizar o ícone */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Esconde o botão do menu mobile em telas maiores */
+@media (min-width: 768px) {
+    .header-nav {
+        display: flex; /* Mostra o menu principal em desktop */
+        min-width: 30%; /* Já existia, mantido */
+    }
+    .btn-menu-mobile {
+        display: none; /* Esconde o botão de hambúrguer no desktop */
+    }
+    .header-toggle {
+        min-width: 30%; /* Já existia, mantido */
+    }
+}
+
+
+.menu-mobile {
+    position: fixed; /* Fixa na tela */
+    top: 0;
+    right: -100%; /* Inicia fora da tela, à direita */
+    width: 70%; /* Largura do menu quando aberto */
+    height: 100vh; /* Altura total da viewport */
+    background: var(--secondary-bg-color); /* Fundo do menu */
+    flex-direction: column; /* Itens um abaixo do outro */
+    justify-content: flex-start;
+    padding-top: 5rem; /* Espaço para o topo, para não colidir com o header */
+    z-index: 100; /* Garante que fique por cima de tudo */
+    transition: right 0.3s ease-in-out; /* Transição suave para abrir/fechar */
+    border-left: 1px solid var(--primary-border-color); /* Borda lateral opcional */
+}
+
+.menu-mobile.active {
+    right: 0; /* Desliza para dentro da tela */
+}
+
+.menu-mobile .menu-list { /* Estilize a lista de itens dentro do menu mobile */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espaço entre os itens */
+    width: 100%;
+    padding: 1rem;
+}
+
+.menu-mobile .menu-item {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.menu-mobile .menu-link {
+    font-size: 1.2rem; /* Tamanho da fonte dos links no menu mobile */
+    justify-content: center; /* Centraliza o texto e ícone do link */
+    padding: 0.5rem;
+}
+
+
+
+
+
+.menu-social{
+    gap: 1rem;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+    background: transparent;
+    border-radius: 3rem;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+.btn:hover{
+    transform: scale(1.05);
+    transition: ease-in-out .3s;
+}
+.btn span, .btn i {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+.btn-primary span {
+    color: var(--primary-color);
+}
+.btn-primary {
+    border: 1px solid var(--primary-color);
+}
+#home {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; 
+}
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.video iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+#home, .projetos, .sobre, .contato{
+    padding: 2.5rem 1rem;
+}
+.tecnologias {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 6.25rem 1rem 2rem;
+    background: var(--secondary-bg-color);
+    margin-top: -5.5rem;
+}
+.tecnologias h2 {
+    font-size: 2rem;
+    text-transform: none;
+    letter-spacing: normal;
+    text-align: start;
+    margin-top: -1rem;
+}
+
+.projetos {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;    
+}
+.projeto-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.projeto-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.card-cover {
+    width: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    object-position: center;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 15px;
+}
+.card-title {
+    font-size: 2rem;
+    color: var(--title-color);
+    font-weight: 400;
+}
+.card-descricao {
+    color: var(--title-color);
+}
+.card-lista .sobre-lista{
+    margin-left: 1.25rem;
+}
+
+.card-button {
+    margin-top: 1rem;
+}
+
+.card-button, .card-descricao{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+}
+.card-button .btn {
+    padding: .65rem 1.25rem;
+}
+.card-button .btn span {
+    font-size: 1rem;
+}
+.projetos .btn {
+    width: auto;
+    margin: auto;
+}
+/* Sobre */
+.sobre {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.sobre-content1, .sobre-content2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+.sobre-logo {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    border-radius: 50rem;
+    border:  8px solid var(--primary-color);
+}
+.sobre-descricao {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem;
+}
+.sobre-icones {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+.sobre-icones i {
+    font-size: 1.25rem;
+}
+.sobre-content2 .col1, 
+.sobre-content2 .col2 {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    gap: 2rem;
+}
+.sobre-content2 .col1 .row1, 
+.sobre-content2 .col1 .row2 {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.accordion-header {
+    width: 100%;
+    display: flex;
+    padding: 0.75rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--primary-border-color);
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+.accordion-header span {
+    color: var(--title-color);
+}
+.accordion-header.start {
+    border-radius: 0.25rem 0.25rem 0rem 0rem;
+}
+.accordion-header.end, 
+.accordion-item.active .accordion-body.end {
+    border-radius: 0rem 0rem 0.25rem 0.25rem;
+}
+.accordion-item.active .accordion-item.end {
+    border-radius: 0;
+}
+.accordion-body {
+    display: none;
+    padding: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .625rem;
+    border: 1px solid var(--primary-border-color);
+}
+.accordion-item.active .accordion-header {
+    background: var(--secondary-bg-color);
+}
+.accordion-item.active .accordion-body {
+    display: flex;
+}
+.accordion-item.active .bi-caret-down-fill {
+    transform: rotate(180deg);
+}
+/* Contato */
+.contato {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    border-top: 1px solid var(--primary-border-color);
+    border-bottom: 1px solid var(--secondary-border-color);
+}
+.contato p {
+    text-align: center;
+}
+.contato .btn {
+    width: auto; /**/
+}
+.contato .email {
+    text-transform: uppercase;
+}
+
+/* Roda Pé */
+footer p {
+    font-size: .875rem;
+    text-align: center;
+    padding: 1rem;
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    #home {
+        padding-top: 6rem;
+    }
+}
+
+@media (min-width: 768px) {
+    #header {
+        padding: 1rem 6rem;
+    }
+       
+    .header-nav { 
+        display: flex;
+    }
+    
+    .header-nav,
+    .header-toggle {
+        min-width: 30%;
+    }
+
+    h1 {
+        font-size: 5rem;
+    }
+    h2 {
+        font-size: 3rem;
+    }
+    #home, .projetos, .sobre {
+        padding: 8rem 6rem 4rem 6rem;
+    }
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .tecnologias {
+        padding: 6.25rem 6rem 2rem 6rem;
+        margin-top: -6rem;
+    }
+    .contato {
+        padding: 6rem;
+    }
+    .contato p {
+        width: 80%;
+    }
+    footer {
+        margin: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .projeto-card {
+        flex-direction: row;
+    }
+    .projeto-card.card-reverse {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+    .card-cover {
+        width: 55%;
+    }
+    .sobre {
+        gap: 5rem;
+    }
+    .sobre-content1, .sobre-content2 {
+        display: grid;
+        grid-template-columns: 34% 60%;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 4rem;
+    }
+
+    .sobre-descricao h2 {
+        text-align: left;
+    }
+    .descricao-button {
+        justify-content: flex-start;
+    }
+}
+@media (min-width: 1200px) {
+    h2 {
+        font-size: 4rem;
+    }
+    h3 {
+        font-size: 2.5rem;
+    }
+    #home {
+        padding: 10rem 6rem 2rem;
+    }
+    .main-content .btn {
+        width: auto;
+    }
+    .tecnologias {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10rem 6rem 4rem;
+    }
+    .tecnologias h2 {
+        font-size: 3rem;
+       /*  width: 55%; */
+    }
+    p, span, li {
+        font-size: 1.15rem;
+    }
+    .card-button .btn, 
+    .descricao-button .btn {
+        width: auto;
+    }
+}
+@media (min-width: 1400px) {
+    h1 {
+        font-size: 6.25rem;
+    }
+    h2{
+        font-size: 4.5rem;
+    }
+    h3 {
+        font-size: 3.25rem;
+    }
+    .tecnologias, .projetos, .sobre {
+        padding: 10rem 15rem 4rem;
+    }
+    .tecnologias h2 {
+        font-size: 4.5rem;
+        text-align: start;
+    }
+}
