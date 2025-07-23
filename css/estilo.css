@@ -508,7 +508,7 @@ p {
     border-top: 1px solid var(--primary-border-color);
     border-bottom: 1px solid var(--secondary-border-color);
 }
-.contato p {
+.contato p{
     text-align: center;
 }
 .contato .btn {
@@ -523,6 +523,9 @@ footer p {
     font-size: .875rem;
     text-align: center;
     padding: 1rem;
+}
+footer i {
+	font-size: .875rem;
 }
 /* Responsividade */
 @media (max-width: 768px) {
