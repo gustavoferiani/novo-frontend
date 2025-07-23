@@ -60,6 +60,11 @@ html[data-theme='light'] .tecnologia-logo {
    scrollbar-width: thin;
    scrollbar-color: var(--secondary-bg-color) transparent;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background: var(--primary-bg-color);
     font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
