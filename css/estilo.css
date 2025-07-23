@@ -350,7 +350,8 @@ p {
 .projetos {
     display: flex;
     flex-direction: column;
-    gap: 2rem;    
+    gap: 2rem;
+    scroll-margin-top: 2.5rem;
 }
 .projeto-container {
     display: flex;
@@ -413,6 +414,7 @@ p {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    scroll-margin-top: 2.5rem;
 }
 .sobre-content1, .sobre-content2 {
     display: flex;
