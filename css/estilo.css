@@ -130,13 +130,15 @@ p {
     display: none; /* Esconde por padrão em mobile */
 }
 
-.header-logo .logo {
+.logo {
     width: 3.25rem;
-    height: 3.25rem;
+    height: 1.89rem;    
 }
+
 .header-toggle {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 #toggleTheme {
     font-size: 1.5rem;
@@ -189,16 +191,19 @@ p {
     gap: 1rem;
 }
 
+/* Botão do menu mobile */
+#menuHamburger {
+  margin-left: 1rem;
+}
 
-/* Estilos do botão do menu mobile */
 .btn-menu-mobile {
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0.5rem;
-    font-size: 1.8rem; /* Tamanho do ícone */
+    font-size: 1.8rem;
     color: var(--icon-color);
-    display: flex; /* Para centralizar o ícone */
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -206,60 +211,69 @@ p {
 /* Esconde o botão do menu mobile em telas maiores */
 @media (min-width: 768px) {
     .header-nav {
-        display: flex; /* Mostra o menu principal em desktop */
-        min-width: 30%; /* Já existia, mantido */
+        display: flex;
+        min-width: 30%;
     }
     .btn-menu-mobile {
-        display: none; /* Esconde o botão de hambúrguer no desktop */
+        display: none;
     }
     .header-toggle {
-        min-width: 30%; /* Já existia, mantido */
+        min-width: 30%;
     }
 }
 
-
+/* Menu mobile (estilo e animação) */
 .menu-mobile {
-    position: fixed; /* Fixa na tela */
+    position: fixed;
     top: 0;
-    right: -100%; /* Inicia fora da tela, à direita */
-    width: 70%; /* Largura do menu quando aberto */
-    height: 100vh; /* Altura total da viewport */
-    background: var(--secondary-bg-color); /* Fundo do menu */
-    flex-direction: column; /* Itens um abaixo do outro */
-    justify-content: flex-start;
-    padding-top: 5rem; /* Espaço para o topo, para não colidir com o header */
-    z-index: 100; /* Garante que fique por cima de tudo */
-    transition: right 0.3s ease-in-out; /* Transição suave para abrir/fechar */
-    border-left: 1px solid var(--primary-border-color); /* Borda lateral opcional */
-}
-
-.menu-mobile.active {
-    right: 0; /* Desliza para dentro da tela */
-}
-
-.menu-mobile .menu-list { /* Estilize a lista de itens dentro do menu mobile */
+    right: 0;
+    transform: translateX(100%);
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--secondary-bg-color);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Espaço entre os itens */
-    width: 100%;
-    padding: 1rem;
+    padding-top: 4rem;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
+    border-left: 1px solid var(--primary-border-color);
 }
 
+/* Ativo: entra na tela */
+.menu-mobile.active {
+    transform: translateX(0%);
+}
+
+/* Lista de itens */
+.menu-mobile .menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1rem 2rem;
+}
+
+/* Item individual */
 .menu-mobile .menu-item {
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0;
 }
 
+/* Link */
 .menu-mobile .menu-link {
-    font-size: 1.2rem; /* Tamanho da fonte dos links no menu mobile */
-    justify-content: center; /* Centraliza o texto e ícone do link */
-    padding: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    display: inline-block;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-
-
-
+.menu-mobile .menu-link:hover,
+.menu-mobile .menu-link.active {
+    color: var(--primary-color);
+}
 
 .menu-social{
     gap: 1rem;
