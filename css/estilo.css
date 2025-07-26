@@ -640,22 +640,6 @@ p {
     width: 100%;
 }
 
-/* Ajuste responsivo */
-@media (max-width: 768px) {
-    #home {
-        padding-top: 6rem;
-    }
-
-    .contato-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contato-formulario h2 {
-        text-align: center;
-    }
-}
-
-
 .contato-formulario,
 .contato-mapa {
     flex: 1 1 500px;
@@ -749,6 +733,10 @@ footer i {
         padding-top: 6rem;
     }
 
+    .contato-grid {
+        grid-template-columns: 1fr;
+    }
+
     .contato-container {
         grid-template-columns: 1fr;
     }
@@ -756,6 +744,9 @@ footer i {
     .contato-formulario,
     .contato-mapa {
         width: 100%;
+    }
+    .contato-formulario h2 {
+        text-align: center;
     }
 }
 
